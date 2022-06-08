@@ -1,0 +1,10 @@
+<ul>
+  {{#each @entries as |outlineEntry|}}
+    <li>
+      {{outlineEntry.content}}
+      {{#if outlineEntry.children}}
+        <InlineComponents::Outline @entries={{outlineEntry.children}} />
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
