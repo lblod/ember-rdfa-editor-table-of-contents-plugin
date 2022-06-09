@@ -7,6 +7,8 @@ import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils
 import ModelRange from '@lblod/ember-rdfa-editor/model/model-range';
 import ModelPosition from '@lblod/ember-rdfa-editor/model/model-position';
 import { action } from '@ember/object';
+// import '@lblod/ember-rdfa-editor/types/lblod/marawa/rdfa-attributes';
+import RdfaAttributes from '@lblod/marawa/rdfa-attributes';
 interface DocumentOutline {
   entries: OutlineEntry[];
 }
@@ -22,12 +24,10 @@ export default class TableOfContentsComponent extends InlineComponent {
 
   constructor(owner: unknown, args: InlineComponentArgs) {
     super(owner, args);
-    const node = this.extractTitle(this.args.controller.modelRoot);
-    if (node) {
-      this.documentOutline = {
-        entries: [{ node, content: ModelNodeUtils.getTextContent(node) }],
-      };
-    }
+    const outline: DocumentOutline = {
+      entries: this.extractOutline(this.args.controller.modelRoot),
+    };
+    this.documentOutline = outline;
 
     this.args.controller.onEvent('contentChanged', this.update.bind(this));
     this.args.controller.onEvent('modelRead', this.update.bind(this));
@@ -40,50 +40,54 @@ export default class TableOfContentsComponent extends InlineComponent {
   }
 
   update() {
-    console.log('UPDATE');
-    const node = this.extractTitle(this.args.controller.modelRoot);
-    if (node) {
-      this.documentOutline = {
-        entries: [{ node, content: ModelNodeUtils.getTextContent(node) }],
-      };
-    }
+    // const node = this.extractTitle(this.args.controller.modelRoot);
+    const outline: DocumentOutline = {
+      entries: this.extractOutline(this.args.controller.modelRoot),
+    };
+    this.documentOutline = outline;
+    // console.log(outline);
+    // if (node) {
+    //   this.documentOutline = {
+    //     entries: [{ node, content: ModelNodeUtils.getTextContent(node) }],
+    //   };
+    // }
   }
 
-  extractRdfaOutline(
-    node: ModelNode
-  ): { content?: object; children?: object[] }[] {
-    if (ModelNode.isModelElement(node)) {
-      const attributes: object = node.getRdfaAttributes() as object;
-      let hasRdfaAttributes = false;
-      for (const k in attributes) {
-        if (k !== 'currentPrefixes') {
-          const val = attributes[k];
-          if (val) {
-            hasRdfaAttributes = true;
-            break;
-          }
-        }
-      }
-      if (hasRdfaAttributes) {
-        if (attributes['properties'].length) {
-          console.log(node);
-          console.log(ModelNodeUtils.getTextContent(node));
-        }
-        const rdfaContent = {
-          content: attributes,
-          children: node.children.flatMap((child) => this.extractTitle(child)),
-        };
-        return [rdfaContent];
-      } else {
-        return node.children.flatMap((child) => this.extractTitle(child));
-      }
-    }
-    return [];
-  }
+  // extractRdfaOutline(
+  //   node: ModelNode
+  // ): { content?: object; children?: object[] }[] {
+  //   if (ModelNode.isModelElement(node)) {
+  //     const attributes: RdfaAttributes = node.getRdfaAttributes();
+  //     let hasRdfaAttributes = false;
+  //     for (const k in attributes) {
+  //       if (k !== 'currentPrefixes') {
+  //         const val = attributes[k];
+  //         if (val) {
+  //           hasRdfaAttributes = true;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //     if (hasRdfaAttributes) {
+  //       if (attributes['properties'].length) {
+  //         console.log(node);
+  //         console.log(ModelNodeUtils.getTextContent(node));
+  //       }
+  //       const rdfaContent = {
+  //         content: attributes,
+  //         children: node.children.flatMap((child) => this.extractTitle(child)),
+  //       };
+  //       return [rdfaContent];
+  //     } else {
+  //       return node.children.flatMap((child) => this.extractTitle(child));
+  //     }
+  //   }
+  //   return [];
+  // }
 
   extractTitle(node: ModelNode): ModelNode | null {
     if (ModelNode.isModelElement(node)) {
-      const attributes: object = node.getRdfaAttributes() as object;
+      const attributes: RdfaAttributes = node.getRdfaAttributes();
       if (
         attributes['properties'] &&
         attributes['properties'].includes(
@@ -103,6 +107,47 @@ export default class TableOfContentsComponent extends InlineComponent {
       return result;
     }
     return null;
+  }
+
+  extractOutline(node: ModelNode): OutlineEntry[] {
+    let result: OutlineEntry[] = [];
+
+    if (ModelNode.isModelElement(node)) {
+      let parent: OutlineEntry | undefined;
+      const attributes: RdfaAttributes = node.getRdfaAttributes();
+      console.log(attributes.properties);
+      if (attributes.properties) {
+        if (
+          attributes.properties.includes(
+            'http://data.europa.eu/eli/ontology#has_part'
+          )
+        ) {
+          const nodes = [
+            ...this.args.controller.datastore
+              .match(`>${attributes.resource}`, `eli:number`)
+              .asObjectNodeMapping()
+              .nodes(),
+          ];
+          if (nodes.length) {
+            console.log(ModelNodeUtils.getTextContent(nodes[0]));
+            parent = { content: ModelNodeUtils.getTextContent(nodes[0]), node };
+          }
+        } else if (attributes.properties.includes('ext:hasParagraph')) {
+          parent = { content: '§', node };
+        }
+      }
+      const subResults: OutlineEntry[] = [];
+      node.children.forEach((child) => {
+        subResults.push(...this.extractOutline(child));
+      });
+      if (parent) {
+        parent.children = subResults;
+        result = [parent];
+      } else {
+        result = subResults;
+      }
+    }
+    return result;
   }
 
   @action

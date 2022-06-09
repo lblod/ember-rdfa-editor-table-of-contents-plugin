@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import Controller from '@lblod/ember-rdfa-editor/addon/model/controller';
+import Controller from '@lblod/ember-rdfa-editor/model/controller';
 
 interface Args {
   controller: Controller;

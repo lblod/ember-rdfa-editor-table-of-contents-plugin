@@ -1,15 +1,15 @@
 <ul>
   {{#each @entries as |outlineEntry|}}
     <li>
-      <AuButton
-        @skin='link'
-        {{on 'click' (fn @onEntryClick outlineEntry.node)}}
-      >
+      <AuButton @skin='link' onclick={{(fn @onEntryClick outlineEntry.node)}}>
         {{outlineEntry.content}}
 
       </AuButton>
       {{#if outlineEntry.children}}
-        <InlineComponents::Outline @entries={{outlineEntry.children}} />
+        <InlineComponents::Outline
+          @entries={{outlineEntry.children}}
+          @onEntryClick={{@onEntryClick}}
+        />
       {{/if}}
     </li>
   {{/each}}
