@@ -1,2 +1,7 @@
-<h2>Table of Contents {{this.numberOfUpdates}}</h2>
-<InlineComponents::Outline @entries={{this.documentOutline.entries}} />
+<h2>Table of Contents</h2>
+{{#if this.documentOutline}}
+  <InlineComponents::Outline
+    @entries={{this.documentOutline.entries}}
+    @onEntryClick={{this.moveToSection}}
+  />
+{{/if}}

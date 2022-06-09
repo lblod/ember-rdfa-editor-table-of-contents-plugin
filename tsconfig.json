@@ -35,16 +35,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "@lblod/ember-rdfa-ic-sample-plugin": [
+      "@lblod/ember-rdfa-table-of-contents-plugin": [
         "addon"
       ],
-      "@lblod/ember-rdfa-ic-sample-plugin/*": [
+      "@lblod/ember-rdfa-table-of-contents-plugin/*": [
         "addon/*"
       ],
-      "@lblod/ember-rdfa-ic-sample-plugin/test-support": [
+      "@lblod/ember-rdfa-table-of-contents-plugin/test-support": [
         "addon-test-support"
       ],
-      "@lblod/ember-rdfa-ic-sample-plugin/test-support/*": [
+      "@lblod/ember-rdfa-table-of-contents-plugin/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [
