@@ -30,11 +30,13 @@ export default class TableOfContentsComponent extends InlineComponent {
     }
 
     this.args.controller.onEvent('contentChanged', this.update.bind(this));
+    this.args.controller.onEvent('modelRead', this.update.bind(this));
   }
 
   willDestroy(): void {
     console.log('destroy');
     this.args.controller.offEvent('contentChanged', this.update.bind(this));
+    this.args.controller.offEvent('modelRead', this.update.bind(this));
   }
 
   update() {
