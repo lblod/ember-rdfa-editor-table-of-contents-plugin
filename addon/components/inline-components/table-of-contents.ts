@@ -40,6 +40,7 @@ export default class TableOfContentsComponent extends InlineComponent {
   }
 
   update() {
+    console.log('UPDATE');
     const node = this.extractTitle(this.args.controller.modelRoot);
     if (node) {
       this.documentOutline = {
@@ -109,6 +110,6 @@ export default class TableOfContentsComponent extends InlineComponent {
     console.log('moveToSection');
     const range = new ModelRange(ModelPosition.fromInNode(node, 0));
     this.args.controller.selection.selectRange(range);
-    this.args.controller.write();
+    this.args.controller.write(true, true);
   }
 }

@@ -1,6 +1,6 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import Controller from '@lblod/ember-rdfa-editor/model/controller';
+import Controller from '@lblod/ember-rdfa-editor/addon/model/controller';
 
 interface Args {
   controller: Controller;
@@ -12,6 +12,5 @@ export default class RdfaIcPluginInsertComponent extends Component<Args> {
       'insert-component',
       'inline-components/table-of-contents'
     );
-    console.log(this.args.controller.name);
   }
 }
