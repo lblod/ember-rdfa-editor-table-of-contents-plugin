@@ -9,6 +9,7 @@ import ModelPosition from '@lblod/ember-rdfa-editor/model/model-position';
 import { action } from '@ember/object';
 // import '@lblod/ember-rdfa-editor/types/lblod/marawa/rdfa-attributes';
 import RdfaAttributes from '@lblod/marawa/rdfa-attributes';
+import { TOC_CONFIG } from '@lblod/ember-rdfa-table-of-contents-plugin/utils/toc_config';
 interface DocumentOutline {
   entries: OutlineEntry[];
 }
@@ -58,7 +59,7 @@ export default class TableOfContentsComponent extends InlineComponent {
         return node;
       }
       let result = null;
-      node.children.forEach((child) => {
+      node.children.forEach((child: ModelNode) => {
         const val = this.extractTitle(child);
         if (val) {
           result = val;
@@ -76,29 +77,35 @@ export default class TableOfContentsComponent extends InlineComponent {
     if (ModelNode.isModelElement(node)) {
       let parent: OutlineEntry | undefined;
       const attributes: RdfaAttributes = node.getRdfaAttributes();
-      console.log(attributes.properties);
       if (attributes.properties) {
-        if (
-          attributes.properties.includes(
-            'http://data.europa.eu/eli/ontology#has_part'
-          )
-        ) {
-          const nodes = [
-            ...this.args.controller.datastore
-              .match(`>${attributes.resource}`, `eli:number`)
-              .asObjectNodeMapping()
-              .nodes(),
-          ];
-          if (nodes.length) {
-            console.log(ModelNodeUtils.getTextContent(nodes[0]));
-            parent = { content: ModelNodeUtils.getTextContent(nodes[0]), node };
+        for (const tocConfigEntry of TOC_CONFIG) {
+          if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
+            if (typeof tocConfigEntry.value === 'string') {
+              parent = { content: tocConfigEntry.value, node };
+              break;
+            } else {
+              const nodes = [
+                ...this.args.controller.datastore
+                  .match(
+                    `>${attributes.resource}`,
+                    tocConfigEntry.value.predicate
+                  )
+                  .asObjectNodeMapping()
+                  .nodes(),
+              ];
+              if (nodes.length) {
+                parent = {
+                  content: ModelNodeUtils.getTextContent(nodes[0]),
+                  node,
+                };
+                break;
+              }
+            }
           }
-        } else if (attributes.properties.includes('ext:hasParagraph')) {
-          parent = { content: '§', node };
         }
       }
       const subResults: OutlineEntry[] = [];
-      node.children.forEach((child) => {
+      node.children.forEach((child: ModelNode) => {
         subResults.push(...this.extractOutline(child));
       });
       if (parent) {

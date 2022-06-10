@@ -1,7 +1,9 @@
-<h2>Table of Contents</h2>
-{{#if this.documentOutline}}
-  <InlineComponents::Outline
-    @entries={{this.documentOutline.entries}}
-    @onEntryClick={{this.moveToSection}}
-  />
-{{/if}}
+<div class="au-u-background-gray-200">
+  <h2>Table of Contents</h2>
+  {{#if this.documentOutline}}
+    <InlineComponents::Outline
+      @entries={{this.documentOutline.entries}}
+      @onEntryClick={{this.moveToSection}}
+    />
+  {{/if}}
+</div>
