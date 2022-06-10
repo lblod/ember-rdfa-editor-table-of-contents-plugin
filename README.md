@@ -1,0 +1,11 @@
+# ember-rdfa-editor-table-of-contents-plugin
+
+This plugin implements an auto-refreshing table of contents using an inline component.
+A table of contents can be inserted into the editor using:
+
+```
+controller.executeCommand(
+      'insert-component',
+      'inline-components/table-of-contents'
+    );
+```
