@@ -1,6 +1,6 @@
-<ul>
+<AuList @divider={{true}} class='table-of-contents'>
   {{#each @entries as |outlineEntry|}}
-    <li>
+    <AuList::Item>
       <AuButton @skin='link' onclick={{(fn @onEntryClick outlineEntry.node)}}>
         {{outlineEntry.content}}
 
@@ -11,6 +11,6 @@
           @onEntryClick={{@onEntryClick}}
         />
       {{/if}}
-    </li>
+    </AuList::Item>
   {{/each}}
-</ul>
+</AuList>

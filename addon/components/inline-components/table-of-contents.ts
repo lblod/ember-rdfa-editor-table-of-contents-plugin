@@ -40,50 +40,11 @@ export default class TableOfContentsComponent extends InlineComponent {
   }
 
   update() {
-    // const node = this.extractTitle(this.args.controller.modelRoot);
     const outline: DocumentOutline = {
       entries: this.extractOutline(this.args.controller.modelRoot),
     };
     this.documentOutline = outline;
-    // console.log(outline);
-    // if (node) {
-    //   this.documentOutline = {
-    //     entries: [{ node, content: ModelNodeUtils.getTextContent(node) }],
-    //   };
-    // }
   }
-
-  // extractRdfaOutline(
-  //   node: ModelNode
-  // ): { content?: object; children?: object[] }[] {
-  //   if (ModelNode.isModelElement(node)) {
-  //     const attributes: RdfaAttributes = node.getRdfaAttributes();
-  //     let hasRdfaAttributes = false;
-  //     for (const k in attributes) {
-  //       if (k !== 'currentPrefixes') {
-  //         const val = attributes[k];
-  //         if (val) {
-  //           hasRdfaAttributes = true;
-  //           break;
-  //         }
-  //       }
-  //     }
-  //     if (hasRdfaAttributes) {
-  //       if (attributes['properties'].length) {
-  //         console.log(node);
-  //         console.log(ModelNodeUtils.getTextContent(node));
-  //       }
-  //       const rdfaContent = {
-  //         content: attributes,
-  //         children: node.children.flatMap((child) => this.extractTitle(child)),
-  //       };
-  //       return [rdfaContent];
-  //     } else {
-  //       return node.children.flatMap((child) => this.extractTitle(child));
-  //     }
-  //   }
-  //   return [];
-  // }
 
   extractTitle(node: ModelNode): ModelNode | null {
     if (ModelNode.isModelElement(node)) {

@@ -9,7 +9,10 @@ export default class ApplicationController extends Controller {
   rdfaEditorInit(controller: EditorController): void {
     controller.executeCommand(
       'insert-component',
-      'inline-components/table-of-contents'
+      'inline-components/table-of-contents',
+      {},
+      {},
+      false
     );
     controller.executeCommand('insert-html', sampleData['DecisionTemplate']);
   }

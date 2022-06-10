@@ -11,6 +11,9 @@ export default class RdfaIcPluginInsertComponent extends Component<Args> {
     this.args.controller.executeCommand(
       'insert-component',
       'inline-components/table-of-contents'
+      // {},
+      // {},
+      // false
     );
   }
 }
