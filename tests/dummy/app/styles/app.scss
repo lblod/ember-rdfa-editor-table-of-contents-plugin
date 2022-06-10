@@ -3,3 +3,9 @@
    ================================== */
 
 @import 'ember-rdfa-editor/a-dummy';
+
+.say-content {
+  .table-of-contents > * {
+    list-style: none;
+  }
+}
