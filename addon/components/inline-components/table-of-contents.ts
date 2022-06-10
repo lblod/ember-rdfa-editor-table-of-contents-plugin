@@ -71,6 +71,11 @@ export default class TableOfContentsComponent extends InlineComponent {
     return null;
   }
 
+  @action
+  remove() {
+    this.args.controller.executeCommand('remove-component', this.args.model);
+  }
+
   extractOutline(node: ModelNode): OutlineEntry[] {
     let result: OutlineEntry[] = [];
 
