@@ -1,4 +1,4 @@
-import RdfaIcSamplePlugin from '../rdfa-toc-sample-plugin';
+import RdfaTocSamplePlugin from '../rdfa-toc-sample-plugin';
 
 function pluginFactory(plugin) {
   return {
@@ -11,7 +11,7 @@ function pluginFactory(plugin) {
 }
 
 export function initialize(application) {
-  application.register('plugin:rdfa-toc', pluginFactory(RdfaIcSamplePlugin), {
+  application.register('plugin:rdfa-toc', pluginFactory(RdfaTocSamplePlugin), {
     singleton: false,
   });
 }

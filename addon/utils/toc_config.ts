@@ -11,9 +11,9 @@ export const TOC_CONFIG: TableOfContentsEntryConfig[] = [
     },
   },
   {
-    sectionPredicate: 'ext:hasStructure',
+    sectionPredicate: 'say:hasPart',
     value: {
-      predicate: '>dct:title',
+      predicate: '>say:heading',
     },
   },
   {

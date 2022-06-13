@@ -4,8 +4,6 @@ import InlineComponent, {
 import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
 import { tracked } from '@glimmer/tracking';
 import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
-import ModelRange from '@lblod/ember-rdfa-editor/model/model-range';
-import ModelPosition from '@lblod/ember-rdfa-editor/model/model-position';
 import { action } from '@ember/object';
 // import '@lblod/ember-rdfa-editor/types/lblod/marawa/rdfa-attributes';
 import RdfaAttributes from '@lblod/marawa/rdfa-attributes';
@@ -25,10 +23,7 @@ export default class TableOfContentsComponent extends InlineComponent {
 
   constructor(owner: unknown, args: InlineComponentArgs) {
     super(owner, args);
-    const outline: DocumentOutline = {
-      entries: this.extractOutline(this.args.controller.modelRoot),
-    };
-    this.documentOutline = outline;
+    this.update();
 
     this.args.controller.onEvent('contentChanged', this.update.bind(this));
     this.args.controller.onEvent('modelRead', this.update.bind(this));
@@ -45,30 +40,6 @@ export default class TableOfContentsComponent extends InlineComponent {
       entries: this.extractOutline(this.args.controller.modelRoot),
     };
     this.documentOutline = outline;
-  }
-
-  extractTitle(node: ModelNode): ModelNode | null {
-    if (ModelNode.isModelElement(node)) {
-      const attributes: RdfaAttributes = node.getRdfaAttributes();
-      if (
-        attributes['properties'] &&
-        attributes['properties'].includes(
-          'http://data.europa.eu/eli/ontology#title'
-        )
-      ) {
-        return node;
-      }
-      let result = null;
-      node.children.forEach((child: ModelNode) => {
-        const val = this.extractTitle(child);
-        if (val) {
-          result = val;
-          return;
-        }
-      });
-      return result;
-    }
-    return null;
   }
 
   @action
@@ -126,7 +97,7 @@ export default class TableOfContentsComponent extends InlineComponent {
   @action
   moveToSection(node: ModelNode) {
     console.log('moveToSection');
-    const range = new ModelRange(ModelPosition.fromInNode(node, 0));
+    const range = this.args.controller.rangeFactory.fromInNode(node, 0);
     this.args.controller.selection.selectRange(range);
     this.args.controller.write(true, true);
   }

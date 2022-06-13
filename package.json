@@ -29,7 +29,7 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "@lblod/ember-rdfa-editor-article-structure-plugin": "file:../ember-rdfa-editor-article-structure-plugin",
+    "@lblod/ember-rdfa-editor-article-structure-plugin": "git+https://github.com/lblod/ember-rdfa-editor-article-structure-plugin.git",
     "@lblod/ember-rdfa-editor-besluit-plugin": "^0.4.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^5.7.2",

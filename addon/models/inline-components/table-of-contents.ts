@@ -1,3 +1,4 @@
+import Controller from '@lblod/ember-rdfa-editor/model/controller';
 import {
   InlineComponentSpec,
   Properties,
@@ -9,7 +10,7 @@ export default class TableOfContentsSpec extends InlineComponentSpec {
       <p>Table of Contents</p>
     `;
   }
-  constructor() {
-    super('inline-components/table-of-contents', 'div');
+  constructor(controller: Controller) {
+    super('inline-components/table-of-contents', 'div', controller);
   }
 }

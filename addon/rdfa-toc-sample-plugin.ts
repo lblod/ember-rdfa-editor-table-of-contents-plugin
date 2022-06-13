@@ -1,7 +1,7 @@
 import Controller from '@lblod/ember-rdfa-editor/model/controller';
 import TableOfContentsSpec from './models/inline-components/table-of-contents';
 
-export default class RdfaIcSamplePlugin {
+export default class RdfaTocSamplePlugin {
   controller!: Controller;
 
   get name() {
@@ -11,16 +11,12 @@ export default class RdfaIcSamplePlugin {
   initialize(controller: Controller) {
     this.controller = controller;
     controller.registerWidget({
-      componentName: 'rdfa-ic-plugin-insert',
-      identifier: 'rdfa-ic-plugin/insert',
+      componentName: 'rdfa-toc-plugin-insert',
+      identifier: 'rdfa-toc-plugin/insert',
       desiredLocation: 'insertSidebar',
     });
-    controller.registerInlineComponent(new TableOfContentsSpec());
+    controller.registerInlineComponent(
+      new TableOfContentsSpec(this.controller)
+    );
   }
-
-  // modelWrittenHandler(event) {
-  //   if (event.owner !== this.name) {
-  //     //TODO implement automatically date recognition and insertion
-  //   }
-  // }
 }
