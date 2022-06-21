@@ -1,11 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import Controller from '@lblod/ember-rdfa-editor/model/controller';
 
-interface Args {
-  controller: Controller;
-}
-export default class RdfaIcPluginInsertComponent extends Component<Args> {
+export default class RdfaIcPluginInsertComponent extends Component {
   @action
   insertTableOfContents() {
     this.args.controller.executeCommand(
