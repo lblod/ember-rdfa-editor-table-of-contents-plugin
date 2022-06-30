@@ -8,7 +8,7 @@ export const TOC_CONFIG = [
   {
     sectionPredicate: 'say:hasPart',
     value: {
-      predicate: '>say:heading',
+      predicate: 'say:heading',
     },
   },
   {
