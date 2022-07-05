@@ -1,9 +1,4 @@
-type TableOfContentsEntryConfig = {
-  sectionPredicate: string;
-  value: string | { predicate: string };
-};
-
-export const TOC_CONFIG: TableOfContentsEntryConfig[] = [
+export const TOC_CONFIG = [
   {
     sectionPredicate: 'http://data.europa.eu/eli/ontology#has_part',
     value: {
@@ -13,7 +8,7 @@ export const TOC_CONFIG: TableOfContentsEntryConfig[] = [
   {
     sectionPredicate: 'say:hasPart',
     value: {
-      predicate: '>say:heading',
+      predicate: 'say:heading',
     },
   },
   {

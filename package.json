@@ -1,6 +1,6 @@
 {
   "name": "@lblod/ember-rdfa-table-of-contents-plugin",
-  "version": "0.0.0",
+  "version": "0.2.1",
   "description": "Table of contents plugin for ember-rdfa-editor",
   "keywords": [
     "ember-addon",
@@ -29,18 +29,17 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "@lblod/ember-rdfa-editor-article-structure-plugin": "git+https://github.com/lblod/ember-rdfa-editor-article-structure-plugin.git",
+    "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.3",
     "@lblod/ember-rdfa-editor-besluit-plugin": "^0.4.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^5.7.2",
-    "ember-cli-typescript": "^5.1.0",
     "ember-mu-transform-helpers": "^2.0.0",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
     "@appuniversum/appuniversum": "^1.0.0",
     "@appuniversum/ember-appuniversum": "^1.0.15",
-    "@lblod/ember-rdfa-editor": "git+https://github.com/lblod/ember-rdfa-editor.git#feature/inline-components",
+    "@lblod/ember-rdfa-editor": "^0.60.0",
     "ember-concurrency": "^2.0.0"
   },
   "devDependencies": {
@@ -53,7 +52,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@lblod/ember-rdfa-editor": "git+https://github.com/lblod/ember-rdfa-editor.git#feature/inline-components",
+    "@lblod/ember-rdfa-editor": "^0.60.0",
     "@types/ember": "^4.0.0",
     "@types/ember-qunit": "^5.0.0",
     "@types/ember-resolver": "^5.0.11",
@@ -77,8 +76,6 @@
     "@types/htmlbars-inline-precompile": "^3.0.0",
     "@types/qunit": "^2.19.0",
     "@types/rsvp": "^4.0.4",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
-    "@typescript-eslint/parser": "^5.27.1",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.4.0",
@@ -89,7 +86,6 @@
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-cli-typescript-blueprints": "^3.0.0",
     "ember-cli-update": "^1.0.1",
     "ember-concurrency": "^2.2.1",
     "ember-concurrency-decorators": "^2.0.3",
@@ -117,7 +113,6 @@
     "qunit-dom": "^1.6.0",
     "sass": "^1.49.7",
     "tracked-toolbox": "^1.2.3",
-    "typescript": "^4.7.3",
     "webpack": "^5.69.0",
     "xml-formatter": "^2.6.1"
   },

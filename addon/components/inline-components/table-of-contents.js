@@ -2,25 +2,14 @@ import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
 import { tracked } from '@glimmer/tracking';
 import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
 import { action } from '@ember/object';
-// import '@lblod/ember-rdfa-editor/types/lblod/marawa/rdfa-attributes';
-import RdfaAttributes from '@lblod/marawa/rdfa-attributes';
 import { TOC_CONFIG } from '@lblod/ember-rdfa-table-of-contents-plugin/utils/toc_config';
 import Component from '@glimmer/component';
-import { InlineComponentArgs } from '@lblod/ember-rdfa-editor/model/inline-components/inline-component-controller';
-interface DocumentOutline {
-  entries: OutlineEntry[];
-}
 
-export interface OutlineEntry {
-  content: string;
-  node: ModelNode;
-  children?: OutlineEntry[];
-}
-export default class TableOfContentsComponent extends Component<InlineComponentArgs> {
+export default class TableOfContentsComponent extends Component {
   @tracked
-  documentOutline: DocumentOutline | undefined;
+  documentOutline;
 
-  constructor(owner: unknown, args: InlineComponentArgs) {
+  constructor(owner, args) {
     super(owner, args);
     this.update();
 
@@ -31,7 +20,7 @@ export default class TableOfContentsComponent extends Component<InlineComponentA
     this.args.editorController.onEvent('modelRead', this.update.bind(this));
   }
 
-  willDestroy(): void {
+  willDestroy() {
     this.args.editorController.offEvent(
       'contentChanged',
       this.update.bind(this)
@@ -41,7 +30,7 @@ export default class TableOfContentsComponent extends Component<InlineComponentA
   }
 
   update() {
-    const outline: DocumentOutline = {
+    const outline = {
       entries: this.extractOutline(this.args.editorController.modelRoot),
     };
     this.documentOutline = outline;
@@ -55,12 +44,12 @@ export default class TableOfContentsComponent extends Component<InlineComponentA
     );
   }
 
-  extractOutline(node: ModelNode): OutlineEntry[] {
-    let result: OutlineEntry[] = [];
+  extractOutline(node) {
+    let result = [];
 
     if (ModelNode.isModelElement(node)) {
-      let parent: OutlineEntry | undefined;
-      const attributes: RdfaAttributes = node.getRdfaAttributes();
+      let parent;
+      const attributes = node.getRdfaAttributes();
       if (attributes.properties) {
         for (const tocConfigEntry of TOC_CONFIG) {
           if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
@@ -88,8 +77,8 @@ export default class TableOfContentsComponent extends Component<InlineComponentA
           }
         }
       }
-      const subResults: OutlineEntry[] = [];
-      node.children.forEach((child: ModelNode) => {
+      const subResults = [];
+      node.children.forEach((child) => {
         subResults.push(...this.extractOutline(child));
       });
       if (parent) {
@@ -103,7 +92,7 @@ export default class TableOfContentsComponent extends Component<InlineComponentA
   }
 
   @action
-  moveToSection(node: ModelNode) {
+  moveToSection(node) {
     console.log('moveToSection');
     const range = this.args.editorController.rangeFactory.fromInNode(node, 0);
     this.args.editorController.selection.selectRange(range);

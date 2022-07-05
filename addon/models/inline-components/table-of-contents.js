@@ -1,13 +1,7 @@
-import Controller from '@lblod/ember-rdfa-editor/model/controller';
-import {
-  InlineComponentSpec,
-  Properties,
-} from '@lblod/ember-rdfa-editor/model/inline-components/model-inline-component';
-import { DomNodeMatcher } from '@lblod/ember-rdfa-editor/model/mark';
-import { AttributeSpec } from '@lblod/ember-rdfa-editor/model/util/render-spec';
+import { InlineComponentSpec } from '@lblod/ember-rdfa-editor/model/inline-components/model-inline-component';
 import { isElement } from '@lblod/ember-rdfa-editor/utils/dom-helpers';
 export default class TableOfContentsSpec extends InlineComponentSpec {
-  matcher: DomNodeMatcher<AttributeSpec> = {
+  matcher = {
     tag: this.tag,
     attributeBuilder: (node) => {
       if (isElement(node)) {
@@ -21,12 +15,12 @@ export default class TableOfContentsSpec extends InlineComponentSpec {
       return null;
     },
   };
-  _renderStatic(_props?: Properties): string {
+  _renderStatic() {
     return `
       <p>Table of Contents</p>
     `;
   }
-  constructor(controller: Controller) {
+  constructor(controller) {
     super('inline-components/table-of-contents', 'div', controller);
   }
 }
