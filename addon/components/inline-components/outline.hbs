@@ -1,7 +1,7 @@
 <AuList @divider={{true}} class='table-of-contents'>
   {{#each @entries as |outlineEntry|}}
     <AuList::Item>
-      <AuButton @skin='link' onclick={{(fn @onEntryClick outlineEntry.node)}}>
+      <AuButton @skin='link' onclick={{fn @onEntryClick outlineEntry.node}}>
         {{outlineEntry.content}}
 
       </AuButton>

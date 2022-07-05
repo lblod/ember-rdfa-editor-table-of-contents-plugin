@@ -8,7 +8,7 @@
   ],
   "repository": "https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin",
   "license": "MIT",
-  "author": "redpencil.io",
+  "author": "vlaanderen",
   "directories": {
     "doc": "doc",
     "test": "tests"
