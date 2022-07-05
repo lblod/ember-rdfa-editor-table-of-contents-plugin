@@ -2,7 +2,7 @@ import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
 import { tracked } from '@glimmer/tracking';
 import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
 import { action } from '@ember/object';
-import { TOC_CONFIG } from '@lblod/ember-rdfa-table-of-contents-plugin/utils/toc_config';
+import { TOC_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/toc_config';
 import Component from '@glimmer/component';
 
 export default class TableOfContentsComponent extends Component {

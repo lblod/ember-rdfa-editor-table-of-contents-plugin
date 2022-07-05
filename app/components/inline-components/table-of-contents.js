@@ -1,1 +1,1 @@
-export { default } from '@lblod/ember-rdfa-table-of-contents-plugin/components/inline-components/table-of-contents';
+export { default } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/components/inline-components/table-of-contents';
