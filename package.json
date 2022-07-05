@@ -24,9 +24,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each",
-    "prepack": "ember ts:precompile",
-    "postpack": "ember ts:clean"
+    "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
     "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.3",
