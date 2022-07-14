@@ -1,10 +1,4 @@
-export const TOC_CONFIG = [
-  {
-    sectionPredicate: 'http://data.europa.eu/eli/ontology#has_part',
-    value: {
-      predicate: 'eli:number',
-    },
-  },
+export const DEFAULT_CONFIG = [
   {
     sectionPredicate: 'say:hasPart',
     value: {

@@ -59,7 +59,20 @@ export default class ApplicationController extends Controller {
     controller.executeCommand(
       'insert-component',
       'inline-components/table-of-contents',
-      {},
+      {
+        config: [
+          {
+            sectionPredicate: 'say:hasPart',
+            value: {
+              predicate: 'say:heading',
+            },
+          },
+          {
+            sectionPredicate: 'ext:hasParagraph',
+            value: '§',
+          },
+        ],
+      },
       {},
       false
     );
