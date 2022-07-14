@@ -1,4 +1,9 @@
 
+## 0.2.4 (2022-07-14)
+
+Addition of dutch and english translations.
+
+
 ## 0.2.3 (2022-07-06)
 
 ## 0.2.2 (2022-07-05)
