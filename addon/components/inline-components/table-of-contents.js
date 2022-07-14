@@ -36,14 +36,6 @@ export default class TableOfContentsComponent extends Component {
     this.documentOutline = outline;
   }
 
-  @action
-  remove() {
-    this.args.editorController.executeCommand(
-      'remove-component',
-      this.args.componentController.model
-    );
-  }
-
   extractOutline(node) {
     let result = [];
 

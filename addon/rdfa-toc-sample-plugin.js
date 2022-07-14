@@ -9,11 +9,6 @@ export default class RdfaTocSamplePlugin {
 
   initialize(controller) {
     this.controller = controller;
-    controller.registerWidget({
-      componentName: 'rdfa-toc-plugin-insert',
-      identifier: 'rdfa-toc-plugin/insert',
-      desiredLocation: 'insertSidebar',
-    });
     controller.registerInlineComponent(
       new TableOfContentsSpec(this.controller)
     );

@@ -1,10 +1,9 @@
 <div class='au-u-background-gray-100 au-u-padding-tiny table-of-contents'>
-  <h3>Table of Contents</h3>
+  <h3>{{t "tableofcontents.title"}}</h3>
   {{#if this.documentOutline}}
     <InlineComponents::Outline
       @entries={{this.documentOutline.entries}}
       @onEntryClick={{this.moveToSection}}
     />
   {{/if}}
-  <AuButton {{on 'click' this.remove}}>Remove</AuButton>
 </div>
