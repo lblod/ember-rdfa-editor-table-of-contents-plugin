@@ -2,7 +2,7 @@ import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
 import { tracked } from '@glimmer/tracking';
 import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
 import { action } from '@ember/object';
-import { TOC_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/toc_config';
+import { DEFAULT_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/default_config';
 import Component from '@glimmer/component';
 
 export default class TableOfContentsComponent extends Component {
@@ -18,6 +18,12 @@ export default class TableOfContentsComponent extends Component {
       this.update.bind(this)
     );
     this.args.editorController.onEvent('modelRead', this.update.bind(this));
+  }
+
+  get config() {
+    return this.args.componentController.props.config
+      ? this.args.componentController.props.config
+      : DEFAULT_CONFIG;
   }
 
   willDestroy() {
@@ -43,7 +49,7 @@ export default class TableOfContentsComponent extends Component {
       let parent;
       const attributes = node.getRdfaAttributes();
       if (attributes.properties) {
-        for (const tocConfigEntry of TOC_CONFIG) {
+        for (const tocConfigEntry of this.config) {
           if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
             if (typeof tocConfigEntry.value === 'string') {
               parent = { content: tocConfigEntry.value, node };
