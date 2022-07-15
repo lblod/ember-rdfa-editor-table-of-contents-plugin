@@ -1,4 +1,13 @@
 
+
+## 0.2.5 (2022-07-15)
+
+#### :rocket: Enhancement
+* [#3](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/3) Custom rdfa support ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.2.4 (2022-07-14)
 
 Addition of dutch and english translations.
