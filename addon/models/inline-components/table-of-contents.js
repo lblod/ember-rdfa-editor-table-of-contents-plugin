@@ -16,9 +16,8 @@ export default class TableOfContentsSpec extends InlineComponentSpec {
     },
   };
   _renderStatic() {
-    return `
-      <p>Table of Contents</p>
-    `;
+    // TODO: should be implemented when static version of inline components work correctly
+    return '';
   }
   constructor(controller) {
     super('inline-components/table-of-contents', 'div', controller);
