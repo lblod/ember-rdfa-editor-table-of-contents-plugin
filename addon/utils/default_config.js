@@ -1,12 +1,14 @@
+import { SAY } from './namespaces';
+
 export const DEFAULT_CONFIG = [
   {
-    sectionPredicate: 'say:hasPart',
+    sectionPredicate: SAY('hasPart'),
     value: {
-      predicate: 'say:heading',
+      predicate: SAY('heading'),
     },
   },
   {
-    sectionPredicate: 'ext:hasParagraph',
+    sectionPredicate: SAY('hasParagraph'),
     value: '§',
   },
 ];
