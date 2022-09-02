@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@appuniversum/appuniversum": "^1.0.0",
     "@appuniversum/ember-appuniversum": "^1.0.15",
-    "@lblod/ember-rdfa-editor": "^0.60.0",
+    "@lblod/ember-rdfa-editor": "^0.62.0",
     "ember-concurrency": "^2.0.0"
   },
   "devDependencies": {
