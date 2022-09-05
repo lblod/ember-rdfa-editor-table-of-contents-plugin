@@ -50,7 +50,11 @@ export default class TableOfContentsComponent extends Component {
       const attributes = node.getRdfaAttributes();
       if (attributes.properties) {
         for (const tocConfigEntry of this.config) {
-          if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
+          if (
+            attributes.properties.includes(
+              tocConfigEntry.sectionPredicate.value
+            )
+          ) {
             if (typeof tocConfigEntry.value === 'string') {
               parent = { content: tocConfigEntry.value, node };
               break;
