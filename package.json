@@ -27,8 +27,8 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
-    "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.3",
-    "@lblod/ember-rdfa-editor-besluit-plugin": "^0.4.0",
+    "@rdfjs/namespace": "^1.1.0",
+    "ember-auto-import": "^2.4.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-htmlbars": "^5.7.2",
     "ember-intl": "^5.7.2",
@@ -38,7 +38,7 @@
   "peerDependencies": {
     "@appuniversum/appuniversum": "^1.0.0",
     "@appuniversum/ember-appuniversum": "^1.0.15",
-    "@lblod/ember-rdfa-editor": "^0.60.0",
+    "@lblod/ember-rdfa-editor": "^0.62.1",
     "ember-concurrency": "^2.0.0"
   },
   "devDependencies": {
@@ -51,7 +51,9 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@lblod/ember-rdfa-editor": "^0.60.0",
+    "@lblod/ember-rdfa-editor": "^0.62.1",
+    "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.8",
+    "@lblod/ember-rdfa-editor-besluit-plugin": "^0.4.0",
     "@types/ember": "^4.0.0",
     "@types/ember-qunit": "^5.0.0",
     "@types/ember-resolver": "^5.0.11",
@@ -77,7 +79,6 @@
     "@types/rsvp": "^4.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.4.0",
     "ember-cli": "~3.28.5",
     "ember-cli-autoprefixer": "^2.0.0",
     "ember-cli-dependency-checker": "^3.2.0",
