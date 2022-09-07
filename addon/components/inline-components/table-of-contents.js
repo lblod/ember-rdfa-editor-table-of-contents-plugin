@@ -4,7 +4,7 @@ import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils
 import { action } from '@ember/object';
 import { DEFAULT_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/default_config';
 import Component from '@glimmer/component';
-
+import dataFactory from '@rdfjs/data-model';
 export default class TableOfContentsComponent extends Component {
   @tracked
   documentOutline;
@@ -43,6 +43,7 @@ export default class TableOfContentsComponent extends Component {
   }
 
   extractOutline(node) {
+    console.log(this.config);
     let result = [];
 
     if (ModelNode.isModelElement(node)) {
@@ -50,11 +51,7 @@ export default class TableOfContentsComponent extends Component {
       const attributes = node.getRdfaAttributes();
       if (attributes.properties) {
         for (const tocConfigEntry of this.config) {
-          if (
-            attributes.properties.includes(
-              tocConfigEntry.sectionPredicate.value
-            )
-          ) {
+          if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
             if (typeof tocConfigEntry.value === 'string') {
               parent = { content: tocConfigEntry.value, node };
               break;
@@ -63,7 +60,7 @@ export default class TableOfContentsComponent extends Component {
                 ...this.args.editorController.datastore
                   .match(
                     `>${attributes.resource}`,
-                    tocConfigEntry.value.predicate
+                    dataFactory.namedNode(tocConfigEntry.value.predicate)
                   )
                   .asObjectNodeMapping()
                   .nodes(),

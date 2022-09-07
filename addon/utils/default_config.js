@@ -1,14 +1,12 @@
-import { SAY } from './namespaces';
-
 export const DEFAULT_CONFIG = [
   {
-    sectionPredicate: SAY('hasPart'),
+    sectionPredicate: 'https://say.data.gift/ns/hasPart',
     value: {
-      predicate: SAY('heading'),
+      predicate: 'https://say.data.gift/ns/heading',
     },
   },
   {
-    sectionPredicate: SAY('hasParagraph'),
+    sectionPredicate: 'https://say.data.gift/ns/hasParagraph',
     value: '§',
   },
 ];

@@ -1,14 +1,34 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 export default class ApplicationController extends Controller {
-  plugins = ['rdfa-toc', 'article-structure'];
+  plugins = [
+    { name: 'rdfa-toc', options: { config: this.tableOfContentsConfig } },
+    'article-structure',
+  ];
+
+  get tableOfContentsConfig() {
+    return [
+      {
+        sectionPredicate: 'https://say.data.gift/ns/hasPart',
+        value: {
+          predicate: 'https://say.data.gift/ns/heading',
+        },
+      },
+      {
+        sectionPredicate: 'https://say.data.gift/ns/hasParagraph',
+        value: '§',
+      },
+    ];
+  }
 
   @action
   rdfaEditorInit(controller) {
     controller.executeCommand(
       'insert-component',
       'inline-components/table-of-contents',
-      {},
+      {
+        config: this.tableOfContentsConfig,
+      },
       {},
       false
     );

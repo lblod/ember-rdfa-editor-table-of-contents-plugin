@@ -7,7 +7,7 @@ export default class RdfaTocSamplePlugin {
     return 'rdfa-ic-sample';
   }
 
-  initialize(controller) {
+  initialize(controller, options) {
     this.controller = controller;
     controller.registerInlineComponent(
       new TableOfContentsSpec(this.controller)
@@ -16,6 +16,9 @@ export default class RdfaTocSamplePlugin {
       componentName: 'table-of-contents-card',
       identifier: 'table-of-contents-plugin/card',
       desiredLocation: 'sidebar',
+      widgetArgs: {
+        config: options.config,
+      },
     });
   }
 }

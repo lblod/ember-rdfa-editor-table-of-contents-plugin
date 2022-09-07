@@ -12,6 +12,12 @@ export default class TableOfContentsCardComponent extends Component {
     return this.tableOfContentsInstances.length !== 0;
   }
 
+  get tableOfContentsProps() {
+    return this.args.widgetArgs.config
+      ? { config: this.args.widgetArgs.config }
+      : {};
+  }
+
   @action
   toggle() {
     if (this.toggled) {
@@ -20,13 +26,13 @@ export default class TableOfContentsCardComponent extends Component {
         const model = instance.componentController.model;
         this.args.controller.executeCommand('remove-component', model);
       });
-      console.log(this.args.controller.modelRoot);
     } else {
       // Add table of contents
+      console.log(this.tableOfContentsProps);
       this.args.controller.executeCommand(
         'insert-component',
         'inline-components/table-of-contents',
-        {},
+        this.tableOfContentsProps,
         {},
         false,
         this.args.controller.rangeFactory.fromInElement(
