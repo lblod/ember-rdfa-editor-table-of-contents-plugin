@@ -12,5 +12,10 @@ export default class RdfaTocSamplePlugin {
     controller.registerInlineComponent(
       new TableOfContentsSpec(this.controller)
     );
+    controller.registerWidget({
+      componentName: 'table-of-contents-card',
+      identifier: 'table-of-contents-plugin/card',
+      desiredLocation: 'sidebar',
+    });
   }
 }
