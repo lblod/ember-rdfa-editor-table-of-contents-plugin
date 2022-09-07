@@ -43,7 +43,6 @@ export default class TableOfContentsComponent extends Component {
   }
 
   extractOutline(node) {
-    console.log(this.config);
     let result = [];
 
     if (ModelNode.isModelElement(node)) {
