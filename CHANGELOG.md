@@ -1,5 +1,20 @@
 
 
+
+## 0.3.0 (2022-09-07)
+
+#### :boom: Breaking Change
+* [#6](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/6) Improved table of contents configuration ([@elpoelma](https://github.com/elpoelma))
+* [#5](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/5) Modification in how configuration works ([@elpoelma](https://github.com/elpoelma))
+
+#### :rocket: Enhancement
+* [#6](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/6) Improved table of contents configuration ([@elpoelma](https://github.com/elpoelma))
+* [#4](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/4) Table-of-contents toggling support ([@elpoelma](https://github.com/elpoelma))
+* [#5](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/5) Modification in how configuration works ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.2.5 (2022-07-15)
 
 #### :rocket: Enhancement
