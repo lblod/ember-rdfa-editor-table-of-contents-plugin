@@ -1,10 +1,10 @@
 import TableOfContentsSpec from './models/inline-components/table-of-contents';
 
-export default class RdfaTocSamplePlugin {
+export default class RdfaTocPlugin {
   controller;
 
   get name() {
-    return 'rdfa-ic-sample';
+    return 'rdfa-toc';
   }
 
   initialize(controller, options) {
