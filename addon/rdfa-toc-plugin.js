@@ -12,13 +12,16 @@ export default class RdfaTocPlugin {
     controller.registerInlineComponent(
       new TableOfContentsSpec(this.controller)
     );
+    const widgetArgs = options?.config
+      ? {
+          config: options.config,
+        }
+      : {};
     controller.registerWidget({
       componentName: 'table-of-contents-card',
       identifier: 'table-of-contents-plugin/card',
       desiredLocation: 'sidebar',
-      widgetArgs: {
-        config: options.config,
-      },
+      widgetArgs,
     });
   }
 }
