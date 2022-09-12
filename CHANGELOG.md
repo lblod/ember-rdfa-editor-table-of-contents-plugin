@@ -1,6 +1,16 @@
 
 
 
+
+## 0.4.0 (2022-09-12)
+
+#### :house: Internal
+* [#9](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/9) Bump editor version and ember-appuniversum ([@elpoelma](https://github.com/elpoelma))
+* [#7](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/7) Change editor versioning strategy and update package lock to version 2 ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.3.0 (2022-09-07)
 
 #### :boom: Breaking Change
