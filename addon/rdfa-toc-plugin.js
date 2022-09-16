@@ -1,10 +1,10 @@
 import TableOfContentsSpec from './models/inline-components/table-of-contents';
 
-export default class RdfaTocSamplePlugin {
+export default class RdfaTocPlugin {
   controller;
 
   get name() {
-    return 'rdfa-ic-sample';
+    return 'rdfa-toc';
   }
 
   initialize(controller, options) {
@@ -12,13 +12,16 @@ export default class RdfaTocSamplePlugin {
     controller.registerInlineComponent(
       new TableOfContentsSpec(this.controller)
     );
+    const widgetArgs = options?.config
+      ? {
+          config: options.config,
+        }
+      : {};
     controller.registerWidget({
       componentName: 'table-of-contents-card',
       identifier: 'table-of-contents-plugin/card',
       desiredLocation: 'sidebar',
-      widgetArgs: {
-        config: options.config,
-      },
+      widgetArgs,
     });
   }
 }
