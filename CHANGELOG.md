@@ -2,6 +2,15 @@
 
 
 
+
+## 0.4.1 (2022-09-16)
+
+#### :bug: Bug Fix
+* [#8](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/8) Fix/make custom config optional ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.4.0 (2022-09-12)
 
 #### :house: Internal
