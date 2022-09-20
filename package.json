@@ -49,7 +49,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@lblod/ember-rdfa-editor": ">=0.63.1",
+    "@lblod/ember-rdfa-editor": "github:lblod/ember-rdfa-editor#fix/inline-components-management",
     "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.9",
     "@types/ember": "^4.0.0",
     "@types/ember__application": "^4.0.0",

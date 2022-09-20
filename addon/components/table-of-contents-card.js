@@ -1,15 +1,22 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 
 export default class TableOfContentsCardComponent extends Component {
+  @tracked toggled;
+
+  constructor() {
+    super(...arguments);
+    this.toggled = this.tableOfContentsInstances.length !== 0;
+    this.args.controller.onEvent('modelWritten', () => {
+      this.toggled = this.tableOfContentsInstances.length !== 0;
+    });
+  }
+
   get tableOfContentsInstances() {
     return this.args.controller.getComponentInstances({
       componentName: 'inline-components/table-of-contents',
     });
-  }
-
-  get toggled() {
-    return this.tableOfContentsInstances.length !== 0;
   }
 
   get tableOfContentsProps() {
