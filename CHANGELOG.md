@@ -3,6 +3,18 @@
 
 
 
+
+## 0.4.2 (2022-09-20)
+
+#### :bug: Bug Fix
+* [#10](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/10) Fix for tracked `toggled` property ([@elpoelma](https://github.com/elpoelma))
+
+#### :house: Internal
+* [#11](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/11) Add release script and release-it packages ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.4.1 (2022-09-16)
 
 #### :bug: Bug Fix
