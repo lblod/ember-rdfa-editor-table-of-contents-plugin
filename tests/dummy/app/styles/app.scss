@@ -4,8 +4,35 @@
 
 @import 'ember-appuniversum';
 @import 'ember-rdfa-editor';
-.say-content {
-  .table-of-contents > * {
-    list-style: none;
+div.table-of-contents {
+  padding: $au-unit-small !important;
+  margin-bottom: $au-unit-large;
+  outline: .2rem dashed var(--au-gray-300);
+  outline-offset: .2rem;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  ul {
+    margin-top: $au-unit-tiny;
+    padding-left: 0;
+  }
+
+  ul ul {
+    margin-left: 0;
+  }
+
+  ul li {
+    list-style-type: none !important;
+  }
+
+  button {
+    display: inline;
+    padding: 0;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
   }
 }
