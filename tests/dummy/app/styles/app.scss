@@ -4,6 +4,7 @@
 
 @import 'ember-appuniversum';
 @import 'ember-rdfa-editor';
+
 div.table-of-contents {
   padding: $au-unit-small !important;
   margin-bottom: $au-unit-large;
@@ -27,12 +28,9 @@ div.table-of-contents {
     list-style-type: none !important;
   }
 
-  button {
-    display: inline;
-    padding: 0;
-    white-space: nowrap;
-    max-width: 100%;
-    overflow: hidden !important;
-    text-overflow: ellipsis;
+  .au-c-button {
+    height: auto;
+    white-space: initial;
+    text-align: left;
   }
 }

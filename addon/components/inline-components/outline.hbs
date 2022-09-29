@@ -1,9 +1,8 @@
 <AuList @divider={{true}} class='table-of-contents'>
   {{#each @entries as |outlineEntry|}}
     <AuList::Item>
-      <AuButton @skin='link-secondary' onclick={{fn @onEntryClick outlineEntry.node}}>
+      <AuButton @block={{true}} @skin='link-secondary' onclick={{fn @onEntryClick outlineEntry.node}}>
         {{outlineEntry.content}}
-
       </AuButton>
       {{#if outlineEntry.children}}
         <InlineComponents::Outline
