@@ -4,6 +4,15 @@
 
 
 
+
+## 0.4.3 (2022-10-04)
+
+#### :bug: Bug Fix
+* [#12](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/12) Add styling and fix overflow of entries in the table of contents ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.4.2 (2022-09-20)
 
 #### :bug: Bug Fix
