@@ -8,8 +8,8 @@
 div.table-of-contents {
   padding: $au-unit-small !important;
   margin-bottom: $au-unit-large;
-  outline: .2rem dashed var(--au-gray-300);
-  outline-offset: .2rem;
+  outline: 0.2rem dashed var(--au-gray-300);
+  outline-offset: 0.2rem;
 
   h3 {
     margin-top: 0;
@@ -26,11 +26,5 @@ div.table-of-contents {
 
   ul li {
     list-style-type: none !important;
-  }
-
-  .au-c-button {
-    height: auto;
-    white-space: initial;
-    text-align: left;
   }
 }
