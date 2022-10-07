@@ -8,7 +8,7 @@ export default class TableOfContentsCardComponent extends Component {
   constructor() {
     super(...arguments);
     this.toggled = this.tableOfContentsInstances.length !== 0;
-    this.args.controller.onEvent('modelWritten', () => {
+    this.args.controller.addTransactionDispatchListener(() => {
       this.toggled = this.tableOfContentsInstances.length !== 0;
     });
   }
@@ -29,25 +29,25 @@ export default class TableOfContentsCardComponent extends Component {
   toggle() {
     if (this.toggled) {
       // Remove instances from table of contents
-      this.tableOfContentsInstances.forEach((instance) => {
-        const model = instance.componentController.model;
-        this.args.controller.executeCommand('remove-component', model);
+      this.args.controller.perform((tr) => {
+        this.tableOfContentsInstances.forEach((instance) => {
+          console.log('INSTANCE: ', instance);
+          const model = instance.componentController.model;
+          tr.commands.removeComponent({
+            component: model,
+          });
+        });
       });
     } else {
       // Add table of contents
-      console.log(this.tableOfContentsProps);
-      this.args.controller.executeCommand(
-        'insert-component',
-        'inline-components/table-of-contents',
-        this.tableOfContentsProps,
-        {},
-        false,
-        this.args.controller.rangeFactory.fromInElement(
-          this.args.controller.modelRoot,
-          0,
-          0
-        )
-      );
+      this.args.controller.perform((tr) => {
+        tr.commands.insertComponent({
+          componentName: 'inline-components/table-of-contents',
+          props: this.tableOfContentsProps,
+          createSnapshot: false,
+          range: tr.rangeFactory.fromInElement(tr.currentDocument, 0, 0),
+        });
+      });
     }
   }
 }

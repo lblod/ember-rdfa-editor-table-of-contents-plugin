@@ -1,6 +1,6 @@
-import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
+import ModelNode from '@lblod/ember-rdfa-editor/core/model/nodes/model-node';
+import ModelNodeUtils from '@lblod/ember-rdfa-editor/utils/model-node-utils';
 import { tracked } from '@glimmer/tracking';
-import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
 import { action } from '@ember/object';
 import { DEFAULT_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/default_config';
 import Component from '@glimmer/component';
@@ -12,12 +12,7 @@ export default class TableOfContentsComponent extends Component {
   constructor(owner, args) {
     super(owner, args);
     this.update();
-
-    this.args.editorController.onEvent(
-      'contentChanged',
-      this.update.bind(this)
-    );
-    this.args.editorController.onEvent('modelRead', this.update.bind(this));
+    this.args.editorController.addTransactionDispatchListener(this.update);
   }
 
   get config() {
@@ -27,14 +22,11 @@ export default class TableOfContentsComponent extends Component {
   }
 
   willDestroy() {
-    this.args.editorController.offEvent(
-      'contentChanged',
-      this.update.bind(this)
-    );
-    this.args.editorController.offEvent('modelRead', this.update.bind(this));
+    this.args.editorController.removeTransactionDispatchController(this.update);
     super.willDestroy();
   }
 
+  @action
   update() {
     const outline = {
       entries: this.extractOutline(this.args.editorController.modelRoot),
@@ -90,10 +82,10 @@ export default class TableOfContentsComponent extends Component {
   }
 
   @action
-  moveToSection(node) {
-    console.log('moveToSection');
-    const range = this.args.editorController.rangeFactory.fromInNode(node, 0);
-    this.args.editorController.selection.selectRange(range);
-    this.args.editorController.write(true, true);
+  moveToSection() {
+    // TODO in TEDI API
+    // const range = this.args.editorController.rangeFactory.fromInNode(node, 0);
+    // this.args.editorController.selection.selectRange(range);
+    // this.args.editorController.write(true, true);
   }
 }
