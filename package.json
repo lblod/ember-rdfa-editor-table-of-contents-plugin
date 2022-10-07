@@ -1,6 +1,6 @@
 {
   "name": "@lblod/ember-rdfa-editor-table-of-contents-plugin",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Table of contents plugin for ember-rdfa-editor",
   "keywords": [
     "ember-addon",
@@ -37,7 +37,7 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-"@appuniversum/ember-appuniversum": "^1.8.0",
+    "@appuniversum/ember-appuniversum": "^1.8.0",
     "@lblod/ember-rdfa-editor": ">=1.0.0-alpha.3",
     "ember-concurrency": "^2.0.0"
   },
