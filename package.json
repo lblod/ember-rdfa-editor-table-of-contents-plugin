@@ -34,6 +34,7 @@
     "ember-cli-htmlbars": "^5.7.2",
     "ember-intl": "^5.7.2",
     "ember-mu-transform-helpers": "^2.0.0",
+    "handlebars": "^4.7.7",
     "uuid": "^8.3.2"
   },
   "peerDependencies": {

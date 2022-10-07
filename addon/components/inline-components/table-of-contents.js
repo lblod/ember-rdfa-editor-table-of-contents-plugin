@@ -1,10 +1,8 @@
-import ModelNode from '@lblod/ember-rdfa-editor/model/model-node';
 import { tracked } from '@glimmer/tracking';
-import ModelNodeUtils from '@lblod/ember-rdfa-editor/model/util/model-node-utils';
 import { action } from '@ember/object';
 import { DEFAULT_CONFIG } from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/default_config';
 import Component from '@glimmer/component';
-import dataFactory from '@rdfjs/data-model';
+import extractOutline from '@lblod/ember-rdfa-editor-table-of-contents-plugin/utils/extract-document-outline';
 export default class TableOfContentsComponent extends Component {
   @tracked
   documentOutline;
@@ -37,56 +35,13 @@ export default class TableOfContentsComponent extends Component {
 
   update() {
     const outline = {
-      entries: this.extractOutline(this.args.editorController.modelRoot),
+      entries: extractOutline(
+        this.args.editorController,
+        this.args.editorController.modelRoot,
+        this.config
+      ),
     };
     this.documentOutline = outline;
-  }
-
-  extractOutline(node) {
-    let result = [];
-
-    if (ModelNode.isModelElement(node)) {
-      let parent;
-      const attributes = node.getRdfaAttributes();
-      if (attributes.properties) {
-        for (const tocConfigEntry of this.config) {
-          if (attributes.properties.includes(tocConfigEntry.sectionPredicate)) {
-            if (typeof tocConfigEntry.value === 'string') {
-              parent = { content: tocConfigEntry.value, node };
-              break;
-            } else {
-              const nodes = [
-                ...this.args.editorController.datastore
-                  .match(
-                    `>${attributes.resource}`,
-                    dataFactory.namedNode(tocConfigEntry.value.predicate)
-                  )
-                  .asObjectNodeMapping()
-                  .nodes(),
-              ];
-              if (nodes.length) {
-                parent = {
-                  content: ModelNodeUtils.getTextContent(nodes[0]),
-                  node,
-                };
-                break;
-              }
-            }
-          }
-        }
-      }
-      const subResults = [];
-      node.children.forEach((child) => {
-        subResults.push(...this.extractOutline(child));
-      });
-      if (parent) {
-        parent.children = subResults;
-        result = [parent];
-      } else {
-        result = subResults;
-      }
-    }
-    return result;
   }
 
   @action

@@ -24,21 +24,28 @@ export default class ApplicationController extends Controller {
 
   @action
   rdfaEditorInit(controller) {
-    controller.executeCommand(
-      'insert-component',
-      'inline-components/table-of-contents',
-      {
-        config: this.tableOfContentsConfig,
-      },
-      {},
-      false
-    );
-    controller.executeCommand(
-      'insert-html',
-      `
-      <div prefix="dct: http://purl.org/dc/terms/ ext: http://mu.semte.ch/vocabularies/ext/ say: https://say.data.gift/ns/ prov: http://www.w3.org/ns/prov#" typeof="https://say.data.gift/ns/DocumentContent">
-        Insert here
-      </div>`
-    );
+    const presetContent = localStorage.getItem('EDITOR_CONTENT');
+    if (presetContent) {
+      controller.setHtmlContent(presetContent);
+      const editorDone = new CustomEvent('editor-done');
+      window.dispatchEvent(editorDone);
+    } else {
+      controller.executeCommand(
+        'insert-component',
+        'inline-components/table-of-contents',
+        {
+          config: this.tableOfContentsConfig,
+        },
+        {},
+        false
+      );
+      controller.executeCommand(
+        'insert-html',
+        `
+        <div prefix="dct: http://purl.org/dc/terms/ ext: http://mu.semte.ch/vocabularies/ext/ say: https://say.data.gift/ns/ prov: http://www.w3.org/ns/prov#" typeof="https://say.data.gift/ns/DocumentContent">
+          Insert here
+        </div>`
+      );
+    }
   }
 }
