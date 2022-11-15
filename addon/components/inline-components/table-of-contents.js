@@ -21,9 +21,9 @@ export default class TableOfContentsComponent extends Component {
   }
 
   get config() {
-    return this.args.componentController.props.config
-      ? this.args.componentController.props.config
-      : DEFAULT_CONFIG;
+    return (
+      this.args.componentController.getProperty('config') ?? DEFAULT_CONFIG
+    );
   }
 
   willDestroy() {
