@@ -50,7 +50,7 @@
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
-    "@lblod/ember-rdfa-editor": ">=0.63.3",
+    "@lblod/ember-rdfa-editor": ">=0.64.0",
     "@lblod/ember-rdfa-editor-article-structure-plugin": "^0.2.9",
     "@release-it-plugins/lerna-changelog": "^5.0.0",
     "@types/ember": "^4.0.0",
