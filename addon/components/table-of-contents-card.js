@@ -40,7 +40,6 @@ export default class TableOfContentsCardComponent extends Component {
         'insert-component',
         'inline-components/table-of-contents',
         this.tableOfContentsProps,
-        {},
         false,
         this.args.controller.rangeFactory.fromInElement(
           this.args.controller.modelRoot,

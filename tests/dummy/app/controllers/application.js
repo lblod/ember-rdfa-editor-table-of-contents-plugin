@@ -30,7 +30,6 @@ export default class ApplicationController extends Controller {
       {
         config: this.tableOfContentsConfig,
       },
-      {},
       false
     );
     controller.executeCommand(
