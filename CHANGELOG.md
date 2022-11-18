@@ -5,6 +5,16 @@
 
 
 
+
+## 0.5.0 (2022-11-18)
+
+#### :house: Internal
+* [#14](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/14) Update inline component according to new properties API ([@elpoelma](https://github.com/elpoelma))
+* [#15](https://github.com/lblod/ember-rdfa-editor-table-of-contents-plugin/pull/15) Update editor to version 0.64.0 ([@elpoelma](https://github.com/elpoelma))
+
+#### Committers: 1
+- Elena Poelman ([@elpoelma](https://github.com/elpoelma))
+
 ## 0.4.3 (2022-10-04)
 
 #### :bug: Bug Fix
