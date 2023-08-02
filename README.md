@@ -1,4 +1,5 @@
 # ember-rdfa-editor-table-of-contents-plugin
+:warning: This ember addon is no longer maintained. Please use [@lblod/ember-rdfa-editor-lblod-plugins](https://github.com/lblod/ember-rdfa-editor-lblod-plugins) instead.
 
 This plugin implements an auto-refreshing table of contents using an ember-rdfa-editor inline component.
 
